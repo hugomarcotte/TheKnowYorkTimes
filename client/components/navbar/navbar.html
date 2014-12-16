@@ -1,29 +1,53 @@
-<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">knowyorktimes</a>
-    </div>
-    <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
-            <a ng-href="{{item.link}}">{{item.title}}</a>
-        </li>
-        <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
-      </ul>
+<nav ng-controller="NavbarCtrl">
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo">X</a>
+    <ul id="nav-mobile" class="right side-nav">
+      <li ng-repeat="item in menu" ng-class="">
+        <a ng-href="{{item.link}}">{{item.title}}</a>
+      </li>
+      <li><a href="" class="modal-trigger" href="#quiz-modal">Quiz</a></li>
+      <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
+      <li><a class="dropdown-button" href="#!" data-activates="navbarDropdown">Dropdown<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+    </ul>
+    <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
+  </div>
+  <script>
+    $(document).ready(function() {
+      $(".dropdown-button").dropdown();
+      $(".button-collapse").sideNav();
+      $('.modal-trigger').leanModal();
+    })
+  </script>
+  <ul id="navbarDropdown" class="dropdown-content">
+    <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
+    <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
+    <li ng-show="isLoggedIn()"><p class="navbar-text">Hello {{ getCurrentUser().name }}</p> </li>
+    <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+    <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
+  </ul>
+</nav>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
-        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
-        <li ng-show="isLoggedIn()"><p class="navbar-text">Hello {{ getCurrentUser().name }}</p> </li>
-        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
-      </ul>
+
+
+<div id="quiz-modal" class="modal">
+  <h4>Select a quiz</h4>
+  <div class="row">
+    <div class="col s12 m6 l6">
+      <select class="disabled">
+        <option value="" disabled selected>Choose a year</option>
+        <option value="1">2014</option>
+        <option value="2">2013</option>
+        <option value="3">2012</option>
+      </select>
+    </div>
+    <div class="col s12 m6 l6">
+      <select class="disabled">
+        <option value="" disabled selected>Choose a category</option>
+        <option value="sports">Sports</option>
+        <option value="culture">Culture</option>
+        <option value="politics">Politics</option>
+      </select>
     </div>
   </div>
+  <a href="#" class="waves-effect btn-flat modal-close">Take the quiz!</a>
 </div>
