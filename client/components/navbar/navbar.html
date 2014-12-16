@@ -5,7 +5,7 @@
       <li ng-repeat="item in menu" ng-class="">
         <a ng-href="{{item.link}}">{{item.title}}</a>
       </li>
-      <li><a href="#" ng-click="">Quiz</a></li>
+      <li><a href="" class="modal-trigger" href="#quiz-modal">Quiz</a></li>
       <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
       <li><a class="dropdown-button" href="#!" data-activates="navbarDropdown">Dropdown<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
     </ul>
@@ -15,6 +15,7 @@
     $(document).ready(function() {
       $(".dropdown-button").dropdown();
       $(".button-collapse").sideNav();
+      $('.modal-trigger').leanModal();
     })
   </script>
   <ul id="navbarDropdown" class="dropdown-content">
@@ -25,3 +26,28 @@
     <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
   </ul>
 </nav>
+
+
+
+<div id="quiz-modal" class="modal">
+  <h4>Select a quiz</h4>
+  <div class="row">
+    <div class="col s12 m6 l6">
+      <select class="disabled">
+        <option value="" disabled selected>Choose a year</option>
+        <option value="1">2014</option>
+        <option value="2">2013</option>
+        <option value="3">2012</option>
+      </select>
+    </div>
+    <div class="col s12 m6 l6">
+      <select class="disabled">
+        <option value="" disabled selected>Choose a category</option>
+        <option value="sports">Sports</option>
+        <option value="culture">Culture</option>
+        <option value="politics">Politics</option>
+      </select>
+    </div>
+  </div>
+  <a href="#" class="waves-effect btn-flat modal-close">Take the quiz!</a>
+</div>
