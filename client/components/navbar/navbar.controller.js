@@ -21,3 +21,4 @@ angular.module('knowyorktimesApp')
       return route === $location.path();
     };
   });
+  
