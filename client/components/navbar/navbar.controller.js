@@ -5,7 +5,8 @@ angular.module('knowyorktimesApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
-    }];
+    }
+  ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
@@ -21,4 +22,3 @@ angular.module('knowyorktimesApp')
       return route === $location.path();
     };
   });
-  

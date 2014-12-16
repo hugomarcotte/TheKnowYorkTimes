@@ -1,10 +1,11 @@
 <nav ng-controller="NavbarCtrl">
   <div class="nav-wrapper">
-    <a href="/" class="brand-logo">The Know York Times</a>
+    <a href="/" class="brand-logo">X</a>
     <ul id="nav-mobile" class="right side-nav">
-      <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
+      <li ng-repeat="item in menu" ng-class="">
         <a ng-href="{{item.link}}">{{item.title}}</a>
       </li>
+      <li><a href="#" ng-click="">Quiz</a></li>
       <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
       <li><a class="dropdown-button" href="#!" data-activates="navbarDropdown">Dropdown<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
     </ul>

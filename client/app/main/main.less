@@ -46,19 +46,27 @@
 
  /* Navbar background color */
 nav {
-  background-color: lighten(#000, 20%);
+  background-color: #fff;
+}
+
+nav ul#nav-mobile li a {
+  color: #000;
 }
 
  /* Navbar hover over color */
 nav ul li:hover, nav ul li.active {
-  background-color: lighten(#000, 40%);
+  background-color: darken(#fff, 10%);
+
 }
 
 .dropdown-content {
   width: 100%;
-  background-color: lighten(#000, 20%);
+  background-color: #fff;
   li {
     width: 79%; /* This is going to have to be fixed at some point */
+    a {
+      color: #000;
+    }
   }
 }
 
@@ -74,3 +82,7 @@ nav ul li:hover, nav ul li.active {
  background: url(/images/new_york.jpg) no-repeat center center fixed;
  background-size: cover;
  } */
+
+.disabled {
+  border: 1px solid #ccc;
+}
